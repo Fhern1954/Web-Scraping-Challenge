@@ -91,3 +91,48 @@ def scrape_mars_facts():
      return mars_data
 
 
+# Mars Hemispheres
+def scrape_hemispheres():
+
+    #Initialize browser
+    browser = init_browser()
+
+    #Retrieve tables from url
+    url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
+    browser.visit(image_url)
+
+    #Cerberus
+    cerberus_image = browser.find_by_css("#product-section > div.collapsible.results > div:nth-child(1) > a > img")
+    for link in cerberus_image:
+        cerberus_url = (link['src'])
+    
+    #Schiaparelli
+    schiaparelli_image = browser.find_by_css("#product-section > div.collapsible.results > div:nth-child(2) > a > img")
+    for link in schiaparelli_image:
+        schiaparelli_url = (link['src'])
+    
+    #Syrtis Major
+    syrtis_image = browser.find_by_css("#product-section > div.collapsible.results > div:nth-child(3) > a > img")
+    for link in syrtis_image:
+        syrtis_url = (link['src'])
+
+    #Valles Marineris
+    valles_image = browser.find_by_css("#product-section > div.collapsible.results > div:nth-child(3) > a > img")
+    for link in valles_image:
+        valles_url = (link['src'])
+
+    
+    # Append the dictionary with the image url string and the hemisphere title to a list
+    hemisphere_image_urls = [
+    {"title": "Valles Marineris Hemisphere", "img_url": valles_url},
+    {"title": "Cerberus Hemisphere", "img_url": cerberus_url},
+    {"title": "Schiaparelli Hemisphere", "img_url": schiaparelli_url},
+    {"title": "Syrtis Major Hemisphere", "img_url": syrtis_url},
+    ]
+
+    #Dictionary entry for Mars Hemispheres
+    mars_data["hiu"] = hemisphere_image_urls
+    
+    browser.quit()
+
+    return mars_data

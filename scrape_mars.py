@@ -10,8 +10,9 @@ import requests
 import warnings
 
 def init_browser():
-    fpath = os.path.normpath(r"C:\Users\felix\OneDrive\Documents\DATA ANALYTICS\HOMEWORK\chromedriver.exe")
-    executable_path = {"executable_path": fpath}
+#     fpath = os.path.normpath(r"C:\Users\felix\OneDrive\Documents\DATA ANALYTICS\HOMEWORK\chromedriver.exe")
+#     executable_path = {"executable_path": fpath}
+    executable_path = {"chromedriver.exe"}
     return Browser("chrome", **executable_path, headless=False)
 
 # Create Global Dictionary

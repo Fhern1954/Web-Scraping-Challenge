@@ -4,9 +4,79 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mission to Mars</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+
+<body text="black">
+    <div class="top_header">
+        <h1 class="text-center">Mission to Mars</h1>
+            <p><a class=btn btn-primary btn-danger btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+
+    <!--Container 1 Mars News-->
+    <div class="container" id="cont-1">
+        <div class="row">
+            <div class="col-md-7">&#160;
+                <div class="box bg-style">
+                    <h3>Latest Mars News</h3>
+                    <hr class="new1">
+                    <h6>{{mars_data.news_title}}</h6>
+                    <p>{{mars_data.news_paragraph</p>
+                </div>
+            </div>
+        </div>
+    </div>
     
+    <!--Container 2 Featured Immage and Mars Facts-->
+    <div class="container" id="cont-1">
+        <div class="row">
+            <div class="col-md-7">&#160;
+                <div class="box bg-style2">
+                    <h3>Featured Mars Image</h3>
+                    <img src="{{mars_data.featured_image_url}}" alt="Featured Mars Image" id="featured-image">
+                </div>
+            </div>
+            <br>
+
+            <div class="col-md-5" id="facts-box">
+                <div class="text-black bg-style sty">
+                    <h3>Mars Fatcs</h3>
+                    <hr class="new1">
+                    {{mars_data.mars_facts|safe}}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!--Container-3 Mars Hemispheres-->
+    <br>
+    <div class="container" id="cont-1">
+        <div class="row">
+            <div class="col-sm-12">&#160;
+                <h3 class="text-marsH">Mars Hemispheres</h3>
+                <hr class="new1">
+
+                <div class="row">
+                    {% for item in mars_data.hemispheres_info %}
+                    <div class="col-md-6">
+                        <br>
+                        <div class="box bg-style2">
+                            <div class="col-md-6">
+                                <img class="card-img-top hem-pics" src="{{item.image_url}}"/>
+
+                            </div>   
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
